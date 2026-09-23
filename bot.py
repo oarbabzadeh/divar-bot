@@ -43,7 +43,7 @@ await session.initialize()
             response = model.generate_content(extraction_prompt)
             json_text = response.text.replace('```json', '').replace('```', '').strip()
             search_params = json.loads(json_text)
-
+            
             mcp_result = await session.call_tool("search", arguments=search_params)
             
             summary_prompt = f'کاربر: {update.message.text}\nنتایج خام: {mcp_result.content}\nنتایج را به فارسی روان و خلاصه برای تلگرام با ایموجی قالب‌بندی کن.'
