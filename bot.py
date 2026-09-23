@@ -41,7 +41,7 @@ await session.initialize()
 
             extraction_prompt = f'کاربر: "{update.message.text}"\nفقط یک JSON بده شامل "query" و "city" (پیش‌فرض tehran). متن اضافه ننویس.'
             response = model.generate_content(extraction_prompt)
-            json_text = response.text.replace('```json', '').replace('```', '').strip()
+            json_text = response.text.replace("```json", "").replace("```", "").strip()
             search_params = json.loads(json_text)
             
             mcp_result = await session.call_tool("search", arguments=search_params)
